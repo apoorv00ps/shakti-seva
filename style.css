@@ -8,10 +8,10 @@
   box-sizing:  border-box;
 }
 
-: root {
+:root {
   /* Colors */
   --primary-blue: #003d82;
-  --secondary-blue:  #0066cc;
+  --secondary-blue: #0066cc;
   --accent-orange: #ff9800;
   --light-bg: #f5f7fa;
   --card-bg: #ffffff;
@@ -21,8 +21,6 @@
   --success:  #27ae60;
   --warning: #e67e22;
   --danger: #e74c3c;
-  
-  /* Spacing */
   --spacing:  1rem;
 }
 
@@ -33,10 +31,10 @@ body {
   line-height: 1.6;
 }
 
-. container {
+.container {
   max-width:  1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing);
+  padding:  0 var(--spacing);
 }
 
 /* ===========================
@@ -45,8 +43,8 @@ body {
 
 h1 {
   font-size: 3rem;
-  font-weight: 700;
-  color:  var(--primary-blue);
+  font-weight:  700;
+  color: var(--primary-blue);
   margin-bottom: 0.5rem;
 }
 
@@ -66,7 +64,7 @@ h3 {
 
 h4 {
   font-size: 1.1rem;
-  font-weight:  600;
+  font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 0.75rem;
 }
@@ -80,7 +78,7 @@ p {
    BUTTONS
    =========================== */
 
-. btn {
+.btn {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
@@ -134,7 +132,7 @@ p {
   transform: translateY(-2px);
 }
 
-. link-btn {
+.link-btn {
   background:  none;
   border: none;
   color: var(--secondary-blue);
@@ -163,9 +161,9 @@ p {
   z-index: 100;
 }
 
-. header-content {
-  display:  flex;
-  justify-content:  space-between;
+.header-content {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -205,13 +203,17 @@ p {
 .hero-section {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
   color: white;
-  padding:  4rem 0;
+  padding: 4rem 0;
   text-align: center;
+}
+
+.hero-section h1 {
+  color: white;
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom:  0.5rem;
   opacity: 0.95;
 }
 
@@ -228,7 +230,7 @@ p {
   flex-wrap: wrap;
 }
 
-.cta-buttons . btn {
+.cta-buttons .btn {
   font-size: 1.05rem;
   padding: 1rem 2rem;
 }
@@ -237,7 +239,7 @@ p {
    FORMS
    =========================== */
 
-. form-group {
+.form-group {
   margin-bottom: 1.5rem;
 }
 
@@ -264,7 +266,7 @@ textarea {
   transition: border-color 0.3s ease;
 }
 
-input: focus,
+input:focus,
 select:focus,
 textarea:focus {
   outline:  none;
@@ -280,7 +282,7 @@ textarea {
    ALERTS
    =========================== */
 
-. alert {
+.alert {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 4px;
@@ -294,7 +296,7 @@ textarea {
   border: 1px solid #c3e6cb;
 }
 
-. alert-error {
+.alert-error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
@@ -313,9 +315,9 @@ textarea {
 .auth-container {
   position: fixed;
   top: 0;
-  left: 0;
+  left:  0;
   right: 0;
-  bottom: 0;
+  bottom:  0;
   background:  rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
@@ -356,7 +358,7 @@ textarea {
   margin-bottom: 1.5rem;
 }
 
-. auth-switch {
+.auth-switch {
   text-align: center;
   margin-top: 1.5rem;
   color: var(--text-light);
@@ -364,28 +366,12 @@ textarea {
 }
 
 /* ===========================
-   CARDS
-   =========================== */
-
-.card {
-  background: var(--card-bg);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* ===========================
    DASHBOARD
    =========================== */
 
-. dashboard {
+.dashboard {
   padding: 2rem 0;
+  min-height: 100vh;
 }
 
 .stats-grid {
@@ -433,7 +419,7 @@ textarea {
 .info-row {
   display: flex;
   justify-content: space-between;
-  padding:  0.75rem 0;
+  padding: 0. 75rem 0;
   border-bottom: 1px solid var(--light-bg);
 }
 
@@ -443,7 +429,7 @@ textarea {
 
 .info-label {
   font-weight: 600;
-  color: var(--text-dark);
+  color:  var(--text-dark);
 }
 
 .info-value {
@@ -506,7 +492,7 @@ textarea {
 .module-header {
   background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
   color: white;
-  padding:  1.5rem;
+  padding: 1. 5rem;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -531,7 +517,7 @@ textarea {
 
 .status-pending {
   background-color: #fff3cd;
-  color:  #856404;
+  color: #856404;
 }
 
 .module-description {
@@ -540,17 +526,22 @@ textarea {
   font-size: 0.95rem;
 }
 
-. module-btn {
+.module-btn {
   width: 100%;
   padding:  0.75rem;
   margin-top: 1rem;
+}
+
+.module-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Query Card */
 .query-card {
   background: var(--card-bg);
   padding: 1.5rem;
-  border-radius:  8px;
+  border-radius: 8px;
   margin-bottom: 2rem;
 }
 
@@ -571,7 +562,7 @@ textarea {
 .query-header {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 1rem;
   gap: 1rem;
 }
@@ -585,7 +576,7 @@ textarea {
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size:  0.85rem;
   font-weight: 600;
 }
 
@@ -594,7 +585,7 @@ textarea {
   color:  #0c5460;
 }
 
-. status-inprogress {
+.status-inprogress {
   background-color: #fff3cd;
   color: #856404;
 }
@@ -604,13 +595,13 @@ textarea {
   color:  #155724;
 }
 
-. query-description {
+.query-description {
   color: var(--text-light);
   margin:  1rem 0;
   line-height: 1.6;
 }
 
-. query-footer {
+.query-footer {
   display: flex;
   justify-content: space-between;
   padding-top: 1rem;
@@ -619,7 +610,7 @@ textarea {
   font-size: 0.9rem;
 }
 
-. admin-note {
+.admin-note {
   background-color: var(--light-bg);
   padding: 1rem;
   border-radius: 4px;
@@ -637,7 +628,7 @@ textarea {
    TABLES
    =========================== */
 
-. table-container {
+.table-container {
   background: var(--card-bg);
   border-radius: 8px;
   overflow-x: auto;
@@ -723,7 +714,6 @@ textarea {
   padding: 2rem;
   border-radius: 8px;
   border-left: 4px solid var(--primary-blue);
-  max-width: 900px;
 }
 
 .about-content p {
@@ -755,7 +745,7 @@ textarea {
 
 .queries-management {
   display: grid;
-  gap: 1.5rem;
+  gap: 1. 5rem;
 }
 
 .query-management-item {
@@ -768,7 +758,7 @@ textarea {
 .query-management-header {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 1rem;
   gap: 1rem;
 }
@@ -794,12 +784,12 @@ textarea {
   }
 
   h2 {
-    font-size:  1.5rem;
+    font-size: 1.5rem;
   }
 
-  . header-content {
+  .header-content {
     flex-direction: column;
-    gap:  1rem;
+    gap: 1rem;
   }
 
   .nav-links {
@@ -822,7 +812,7 @@ textarea {
     width: 100%;
   }
 
-  . profile-grid {
+  .profile-grid {
     grid-template-columns: 1fr;
   }
 
@@ -840,7 +830,7 @@ textarea {
 
   .data-table th,
   .data-table td {
-    padding: 0.75rem;
+    padding:  0.75rem;
   }
 
   .auth-card {
@@ -858,10 +848,10 @@ textarea {
 
 @media (max-width: 480px) {
   .logo-subtitle {
-    font-size: 0.7rem;
+    font-size:  0.7rem;
   }
 
-  . hero-subtitle {
+  .hero-subtitle {
     font-size: 1.2rem;
   }
 
@@ -873,7 +863,7 @@ textarea {
     font-size: 2rem;
   }
 
-  . modules-grid {
+  .modules-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -889,7 +879,7 @@ textarea {
   font-weight: 600;
 }
 
-. empty-state {
+.empty-state {
   text-align: center;
   padding: 3rem 1rem;
   color: var(--text-light);
@@ -901,6 +891,6 @@ textarea {
   opacity: 0.5;
 }
 
-. main-content {
+.main-content {
   min-height: calc(100vh - 60px);
 }
