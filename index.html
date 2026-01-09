@@ -1,351 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHAKTI SEVA - Worker Registration Portal</title>
-  <link rel="stylesheet" href="styles. css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAKTI SEVA - Official Worker Registration Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Firebase SDKs -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <!-- Navigation Header -->
-  <header class="header">
-    <div class="container header-content">
-      <div class="logo">
-        🏢 SHAKTI SEVA
-        <div class="logo-subtitle">Official Worker Registration Portal</div>
-      </div>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <button id="logoutBtn" class="btn btn-danger" style="display: none; padding: 0.5rem 1rem;">Logout</button>
-      </nav>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Initializing SHAKTI SEVA Portal...</p>
     </div>
-  </header>
 
-  <!-- Main Container -->
-  <main class="main-content">
-    
-    <!-- Hero Section (Home) -->
-    <section id="hero-section" class="hero-section">
-      <div class="container">
-        <h1>🌟 SHAKTI SEVA</h1>
-        <p class="hero-subtitle">Official Worker Registration, Upskilling & Grievance Portal</p>
-        <p class="hero-description">Empowering Informal Workers with Recognition and Opportunity</p>
-        <div class="cta-buttons">
-          <button id="workerRegBtn" class="btn btn-primary">👷 Register as Worker</button>
-          <button id="adminRegBtn" class="btn btn-secondary">👨‍💼 Register as Admin</button>
-          <button id="loginBtn" class="btn btn-success">🔐 Login</button>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar hidden">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🔧 SHAKTI SEVA</h2>
+                <span class="tagline">Worker Empowerment Portal</span>
+            </div>
+            <div class="nav-actions">
+                <button id="profile-btn" class="btn-secondary">Profile</button>
+                <button id="logout-btn" class="btn-outline">Logout</button>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- Authentication Section -->
+    <section id="auth-section" class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>SHAKTI SEVA</h1>
+                    <p>Official Worker Registration & Command Portal</p>
+                </div>
+                <form id="auth-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary full-width" id="auth-submit">
+                        Sign In
+                    </button>
+                </form>
+                <div id="auth-error" class="error-message hidden"></div>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="register-link">Register here</a></p>
+                </div>
+            </div>
+        </div>
     </section>
-
-    <!-- Auth Modal -->
-    <div id="auth-modal" class="auth-modal" style="display: none;">
-      <div class="auth-modal-content">
-        <button class="close-btn" id="closeAuthBtn">&times;</button>
-        
-        <!-- Login Form -->
-        <div id="login-form" class="auth-form">
-          <h2>🔐 Login</h2>
-          <div id="loginAlert" class="alert" style="display: none;"></div>
-          
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="loginEmail" placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="loginPassword" placeholder="At least 6 characters">
-          </div>
-
-          <button id="loginSubmitBtn" class="btn btn-primary" style="width: 100%;">Login</button>
-
-          <p class="auth-switch">
-            Don't have an account? 
-            <button id="switchToWorkerReg" class="link-btn">Register as Worker</button>
-          </p>
-        </div>
-
-        <!-- Worker Registration Form -->
-        <div id="worker-reg-form" class="auth-form" style="display: none;">
-          <h2>👷 Worker Registration</h2>
-          <div id="workerAlert" class="alert" style="display: none;"></div>
-
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="workerName" placeholder="Enter your full name">
-          </div>
-
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="workerEmail" placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="tel" id="workerPhone" placeholder="10-digit number" maxlength="10">
-          </div>
-
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="workerPassword" placeholder="At least 6 characters">
-          </div>
-
-          <div class="form-group">
-            <label>Profession</label>
-            <select id="workerProfession">
-              <option value="">-- Select Profession --</option>
-              <option value="Mason">🏗️ Mason</option>
-              <option value="Carpenter">🪛 Carpenter</option>
-              <option value="Electrician">⚡ Electrician</option>
-              <option value="Plumber">🔧 Plumber</option>
-              <option value="Painter">🎨 Painter</option>
-              <option value="Welder">🔥 Welder</option>
-              <option value="Construction Helper">👷 Construction Helper</option>
-              <option value="Other">📝 Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Location (City/District)</label>
-            <input type="text" id="workerLocation" placeholder="Your city/district">
-          </div>
-
-          <div class="form-group">
-            <label>Years of Experience</label>
-            <input type="number" id="workerExperience" min="0" max="70" placeholder="0">
-          </div>
-
-          <button id="workerRegSubmitBtn" class="btn btn-primary" style="width: 100%;">Register as Worker</button>
-
-          <p class="auth-switch">
-            Already have an account?  
-            <button id="switchToLoginFromWorker" class="link-btn">Login here</button>
-          </p>
-        </div>
-
-        <!-- Admin Registration Form -->
-        <div id="admin-reg-form" class="auth-form" style="display:  none;">
-          <h2>👨‍💼 Admin Registration</h2>
-          <div id="adminAlert" class="alert" style="display: none;"></div>
-
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="adminName" placeholder="Enter your full name">
-          </div>
-
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="adminEmail" placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="tel" id="adminPhone" placeholder="10-digit number" maxlength="10">
-          </div>
-
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="adminPassword" placeholder="At least 6 characters">
-          </div>
-
-          <div class="form-group">
-            <label>Designation</label>
-            <select id="adminDesignation">
-              <option value="">-- Select Designation --</option>
-              <option value="Government Officer">👔 Government Officer</option>
-              <option value="Labour Department Admin">📋 Labour Department Admin</option>
-              <option value="NGO Representative">🤝 NGO Representative</option>
-              <option value="Training Authority">📚 Training Authority</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Department/Office</label>
-            <input type="text" id="adminDepartment" placeholder="Your department">
-          </div>
-
-          <button id="adminRegSubmitBtn" class="btn btn-primary" style="width: 100%;">Register as Admin</button>
-
-          <p class="auth-switch">
-            Already have an account? 
-            <button id="switchToLoginFromAdmin" class="link-btn">Login here</button>
-          </p>
-        </div>
-      </div>
-    </div>
 
     <!-- Worker Dashboard -->
-    <section id="worker-dashboard" class="dashboard" style="display: none;">
-      <div class="container">
-        <h2>📊 Worker Dashboard</h2>
-        
-        <div class="stats-grid" id="statsGrid"></div>
+    <main id="worker-dashboard" class="dashboard hidden">
+        <div class="dashboard-container">
+            <!-- Profile Section -->
+            <section class="dashboard-section">
+                <h2>Worker Profile</h2>
+                <div id="worker-profile" class="profile-card"></div>
+            </section>
 
-        <h3>📋 Your Profile</h3>
-        <div class="profile-grid">
-          <div class="profile-card">
-            <h4>Personal Information</h4>
-            <div class="info-row">
-              <span class="info-label">Worker ID:</span>
-              <span class="info-value" id="displayWorkerId">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Full Name:</span>
-              <span class="info-value" id="displayWorkerName">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Email:</span>
-              <span class="info-value" id="displayWorkerEmail">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Mobile:</span>
-              <span class="info-value" id="displayWorkerPhone">-</span>
-            </div>
-          </div>
+            <!-- Upskilling Section -->
+            <section class="dashboard-section">
+                <h2>Upskilling Modules</h2>
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <label>Overall Progress</label>
+                        <div class="progress-bar">
+                            <div id="overall-progress" class="progress-fill"></div>
+                        </div>
+                        <span id="overall-progress-text" class="progress-text">0%</span>
+                    </div>
+                </div>
+                <div id="upskilling-modules" class="modules-grid"></div>
+            </section>
 
-          <div class="profile-card">
-            <h4>Work Information</h4>
-            <div class="info-row">
-              <span class="info-label">Profession:</span>
-              <span class="info-value" id="displayWorkerProfession">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Location:</span>
-              <span class="info-value" id="displayWorkerLocation">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Experience:</span>
-              <span class="info-value" id="displayWorkerExperience">-</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Status:</span>
-              <span class="info-value" id="displayWorkerStatus">-</span>
-            </div>
-          </div>
+            <!-- Command Requests Section -->
+            <section class="dashboard-section">
+                <h2>Command Requests</h2>
+                <button id="new-request-btn" class="btn-primary">+ New Request</button>
+                <div id="worker-requests" class="requests-list"></div>
+            </section>
         </div>
-
-        <h3>📈 Upskilling Progress</h3>
-        <div class="progress-card">
-          <div class="progress-container">
-            <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
-          </div>
-          <p class="progress-text"><span id="progressPercent">0</span>% Completed</p>
-        </div>
-
-        <h3>📚 Training Modules</h3>
-        <div class="modules-grid" id="modulesGrid"></div>
-
-        <h3>📝 Submit Query/Grievance</h3>
-        <div class="query-card">
-          <div id="queryAlert" class="alert" style="display: none;"></div>
-          
-          <div class="form-group">
-            <label>Query Type</label>
-            <select id="queryType">
-              <option value="">-- Select Type --</option>
-              <option value="Payment">💰 Payment Related</option>
-              <option value="Safety">🛡️ Safety Concern</option>
-              <option value="Harassment">⚠️ Harassment</option>
-              <option value="Other">📝 Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Description</label>
-            <textarea id="queryDescription" placeholder="Describe your issue..." rows="5"></textarea>
-          </div>
-
-          <button id="submitQueryBtn" class="btn btn-primary">🚀 Submit Query</button>
-        </div>
-
-        <h3>📊 Your Queries</h3>
-        <div class="queries-list" id="queriesList"></div>
-      </div>
-    </section>
+    </main>
 
     <!-- Admin Dashboard -->
-    <section id="admin-dashboard" class="dashboard" style="display: none;">
-      <div class="container">
-        <h2>👨‍💼 Admin Dashboard</h2>
+    <main id="admin-dashboard" class="dashboard hidden">
+        <div class="dashboard-container">
+            <!-- Overview Section -->
+            <section class="dashboard-section overview-grid">
+                <div class="metric-card">
+                    <h3>Total Workers</h3>
+                    <div id="total-workers" class="metric-value">0</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Avg Upskilling</h3>
+                    <div id="avg-upskilling" class="metric-value">0%</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Active Requests</h3>
+                    <div id="active-requests" class="metric-value">0</div>
+                </div>
+            </section>
 
-        <div class="stats-grid" id="adminStatsGrid"></div>
+            <!-- Worker Management -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2>Worker Management</h2>
+                    <div class="filters">
+                        <select id="profession-filter">
+                            <option value="">All Professions</option>
+                        </select>
+                        <select id="location-filter">
+                            <option value="">All Locations</option>
+                        </select>
+                        <select id="progress-filter">
+                            <option value="">All Progress</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="workers-table" class="table-container"></div>
+            </section>
 
-        <h3>👥 Workers Management</h3>
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Worker ID</th>
-                <th>Name</th>
-                <th>Profession</th>
-                <th>Location</th>
-                <th>Progress %</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="workersTableBody">
-            </tbody>
-          </table>
+            <!-- Request Management -->
+            <section class="dashboard-section">
+                <h2>Command Request Management</h2>
+                <div id="admin-requests" class="requests-list"></div>
+            </section>
         </div>
+    </main>
 
-        <h3>📝 Queries Management</h3>
-        <div id="queriesManagement"></div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-      <div class="container">
-        <h2>Platform Features</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">📋</div>
-            <h3>Worker Registration</h3>
-            <p>Officially register and receive a unique Worker ID. </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">📚</div>
-            <h3>Upskilling Modules</h3>
-            <p>Complete training in Safety, Financial Literacy, and Tool Handling.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>Query & Grievances</h3>
-            <p>Submit complaints and queries.  Get official support. </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>Dashboard Analytics</h3>
-            <p>View your profile, training progress, and query status.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">🔐</div>
-            <h3>Secure & Verified</h3>
-            <p>Government-grade security for all your data. </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">👨‍💼</div>
-            <h3>Admin Management</h3>
-            <p>Dedicated admin portal for managing workers and queries.</p>
-          </div>
+    <!-- New Request Modal -->
+    <div id="request-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Command Request</h3>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <form id="request-form">
+                <div class="form-group">
+                    <label for="request-type">Request Type</label>
+                    <select id="request-type" required>
+                        <option value="Payment">Payment Issue</option>
+                        <option value="Safety">Safety Concern</option>
+                        <option value="Harassment">Harassment</option>
+                        <option value="Certification">Certification</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="request-description">Description</label>
+                    <textarea id="request-description" rows="5" required placeholder="Describe your issue..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-request">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Request</button>
+                </div>
+            </form>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 SHAKTI SEVA | Official Government Worker Portal</p>
-  </footer>
-
-  <!-- App Script -->
-  <script type="module" src="app.js"></script>
+    </div>
 </body>
 </html>
