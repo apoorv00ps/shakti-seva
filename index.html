@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHAKTI SEVA - Worker Registration Portal</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles. css">
 </head>
 <body>
   <!-- Navigation Header -->
@@ -17,8 +17,7 @@
       <nav class="nav-links">
         <a href="#home">Home</a>
         <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <button id="logoutBtn" class="btn btn-danger" style="display: none;">Logout</button>
+        <button id="logoutBtn" class="btn btn-danger" style="display: none; padding: 0.5rem 1rem;">Logout</button>
       </nav>
     </div>
   </header>
@@ -27,7 +26,7 @@
   <main class="main-content">
     
     <!-- Hero Section (Home) -->
-    <section id="home" class="hero-section">
+    <section id="hero-section" class="hero-section">
       <div class="container">
         <h1>🌟 SHAKTI SEVA</h1>
         <p class="hero-subtitle">Official Worker Registration, Upskilling & Grievance Portal</p>
@@ -40,62 +39,62 @@
       </div>
     </section>
 
-    <!-- Auth Sections (Hidden by default) -->
-    <section id="auth-section" class="auth-container" style="display: none;">
-      <div class="auth-card">
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="auth-modal" style="display: none;">
+      <div class="auth-modal-content">
         <button class="close-btn" id="closeAuthBtn">&times;</button>
         
         <!-- Login Form -->
-        <div id="login-form" class="auth-form" style="display: none;">
+        <div id="login-form" class="auth-form">
           <h2>🔐 Login</h2>
-          <div id="loginAlert" class="alert" style="display:none;"></div>
+          <div id="loginAlert" class="alert" style="display: none;"></div>
           
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" id="loginEmail" placeholder="your@email.com" required>
+            <input type="email" id="loginEmail" placeholder="your@email.com">
           </div>
 
           <div class="form-group">
             <label>Password</label>
-            <input type="password" id="loginPassword" placeholder="At least 6 characters" required>
+            <input type="password" id="loginPassword" placeholder="At least 6 characters">
           </div>
 
           <button id="loginSubmitBtn" class="btn btn-primary" style="width: 100%;">Login</button>
 
           <p class="auth-switch">
             Don't have an account? 
-            <button id="switchToWorkerRegBtn" class="link-btn">Register as Worker</button>
+            <button id="switchToWorkerReg" class="link-btn">Register as Worker</button>
           </p>
         </div>
 
         <!-- Worker Registration Form -->
-        <div id="worker-reg-form" class="auth-form" style="display:none;">
+        <div id="worker-reg-form" class="auth-form" style="display: none;">
           <h2>👷 Worker Registration</h2>
-          <div id="workerAlert" class="alert" style="display:none;"></div>
+          <div id="workerAlert" class="alert" style="display: none;"></div>
 
           <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" id="workerName" placeholder="Enter your full name" required>
+            <label>Full Name</label>
+            <input type="text" id="workerName" placeholder="Enter your full name">
           </div>
 
           <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" id="workerEmail" placeholder="your@email. com" required>
+            <label>Email Address</label>
+            <input type="email" id="workerEmail" placeholder="your@email.com">
           </div>
 
           <div class="form-group">
-            <label>Mobile Number *</label>
-            <input type="tel" id="workerPhone" placeholder="10-digit number" maxlength="10" required>
+            <label>Mobile Number</label>
+            <input type="tel" id="workerPhone" placeholder="10-digit number" maxlength="10">
           </div>
 
           <div class="form-group">
-            <label>Password *</label>
-            <input type="password" id="workerPassword" placeholder="At least 6 characters" required>
+            <label>Password</label>
+            <input type="password" id="workerPassword" placeholder="At least 6 characters">
           </div>
 
           <div class="form-group">
-            <label>Profession *</label>
-            <select id="workerProfession" required>
+            <label>Profession</label>
+            <select id="workerProfession">
               <option value="">-- Select Profession --</option>
               <option value="Mason">🏗️ Mason</option>
               <option value="Carpenter">🪛 Carpenter</option>
@@ -109,51 +108,51 @@
           </div>
 
           <div class="form-group">
-            <label>Location (City/District) *</label>
-            <input type="text" id="workerLocation" placeholder="Your city/district" required>
+            <label>Location (City/District)</label>
+            <input type="text" id="workerLocation" placeholder="Your city/district">
           </div>
 
           <div class="form-group">
-            <label>Years of Experience *</label>
-            <input type="number" id="workerExperience" min="0" max="70" placeholder="0" required>
+            <label>Years of Experience</label>
+            <input type="number" id="workerExperience" min="0" max="70" placeholder="0">
           </div>
 
-          <button id="workerRegSubmitBtn" class="btn btn-primary" style="width:100%;">Register as Worker</button>
+          <button id="workerRegSubmitBtn" class="btn btn-primary" style="width: 100%;">Register as Worker</button>
 
           <p class="auth-switch">
-            Already have an account?   
-            <button id="switchToLoginBtn" class="link-btn">Login here</button>
+            Already have an account?  
+            <button id="switchToLoginFromWorker" class="link-btn">Login here</button>
           </p>
         </div>
 
         <!-- Admin Registration Form -->
         <div id="admin-reg-form" class="auth-form" style="display:  none;">
           <h2>👨‍💼 Admin Registration</h2>
-          <div id="adminAlert" class="alert" style="display:none;"></div>
+          <div id="adminAlert" class="alert" style="display: none;"></div>
 
           <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" id="adminName" placeholder="Enter your full name" required>
+            <label>Full Name</label>
+            <input type="text" id="adminName" placeholder="Enter your full name">
           </div>
 
           <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" id="adminEmail" placeholder="your@email.com" required>
+            <label>Email Address</label>
+            <input type="email" id="adminEmail" placeholder="your@email.com">
           </div>
 
           <div class="form-group">
-            <label>Mobile Number *</label>
-            <input type="tel" id="adminPhone" placeholder="10-digit number" maxlength="10" required>
+            <label>Mobile Number</label>
+            <input type="tel" id="adminPhone" placeholder="10-digit number" maxlength="10">
           </div>
 
           <div class="form-group">
-            <label>Password *</label>
-            <input type="password" id="adminPassword" placeholder="At least 6 characters" required>
+            <label>Password</label>
+            <input type="password" id="adminPassword" placeholder="At least 6 characters">
           </div>
 
           <div class="form-group">
-            <label>Designation *</label>
-            <select id="adminDesignation" required>
+            <label>Designation</label>
+            <select id="adminDesignation">
               <option value="">-- Select Designation --</option>
               <option value="Government Officer">👔 Government Officer</option>
               <option value="Labour Department Admin">📋 Labour Department Admin</option>
@@ -163,30 +162,28 @@
           </div>
 
           <div class="form-group">
-            <label>Department/Office *</label>
-            <input type="text" id="adminDepartment" placeholder="Your department" required>
+            <label>Department/Office</label>
+            <input type="text" id="adminDepartment" placeholder="Your department">
           </div>
 
-          <button id="adminRegSubmitBtn" class="btn btn-primary" style="width:100%;">Register as Admin</button>
+          <button id="adminRegSubmitBtn" class="btn btn-primary" style="width: 100%;">Register as Admin</button>
 
           <p class="auth-switch">
-            Already have an account?  
-            <button id="switchToLoginBtn2" class="link-btn">Login here</button>
+            Already have an account? 
+            <button id="switchToLoginFromAdmin" class="link-btn">Login here</button>
           </p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Worker Dashboard (Hidden by default) -->
-    <section id="worker-dashboard" class="dashboard" style="display:none;">
+    <!-- Worker Dashboard -->
+    <section id="worker-dashboard" class="dashboard" style="display: none;">
       <div class="container">
         <h2>📊 Worker Dashboard</h2>
         
-        <!-- Stats Grid -->
         <div class="stats-grid" id="statsGrid"></div>
 
-        <!-- Profile Section -->
-        <h3 style="margin-top: 2rem;">📋 Your Profile</h3>
+        <h3>📋 Your Profile</h3>
         <div class="profile-grid">
           <div class="profile-card">
             <h4>Personal Information</h4>
@@ -229,8 +226,7 @@
           </div>
         </div>
 
-        <!-- Upskilling Progress -->
-        <h3 style="margin-top:  2rem;">📈 Upskilling Progress</h3>
+        <h3>📈 Upskilling Progress</h3>
         <div class="progress-card">
           <div class="progress-container">
             <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
@@ -238,18 +234,16 @@
           <p class="progress-text"><span id="progressPercent">0</span>% Completed</p>
         </div>
 
-        <!-- Training Modules -->
-        <h3 style="margin-top: 2rem;">📚 Training Modules</h3>
+        <h3>📚 Training Modules</h3>
         <div class="modules-grid" id="modulesGrid"></div>
 
-        <!-- Queries Section -->
-        <h3 style="margin-top: 2rem;">📝 Submit Query/Grievance</h3>
+        <h3>📝 Submit Query/Grievance</h3>
         <div class="query-card">
-          <div id="queryAlert" class="alert" style="display:none;"></div>
+          <div id="queryAlert" class="alert" style="display: none;"></div>
           
           <div class="form-group">
-            <label>Query Type *</label>
-            <select id="queryType" required>
+            <label>Query Type</label>
+            <select id="queryType">
               <option value="">-- Select Type --</option>
               <option value="Payment">💰 Payment Related</option>
               <option value="Safety">🛡️ Safety Concern</option>
@@ -259,38 +253,34 @@
           </div>
 
           <div class="form-group">
-            <label>Description *</label>
-            <textarea id="queryDescription" placeholder="Describe your issue..." rows="5" required></textarea>
+            <label>Description</label>
+            <textarea id="queryDescription" placeholder="Describe your issue..." rows="5"></textarea>
           </div>
 
           <button id="submitQueryBtn" class="btn btn-primary">🚀 Submit Query</button>
         </div>
 
-        <!-- View Queries -->
-        <h3 style="margin-top:  2rem;">📊 Your Queries</h3>
+        <h3>📊 Your Queries</h3>
         <div class="queries-list" id="queriesList"></div>
       </div>
     </section>
 
-    <!-- Admin Dashboard (Hidden by default) -->
-    <section id="admin-dashboard" class="dashboard" style="display:none;">
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard" class="dashboard" style="display: none;">
       <div class="container">
         <h2>👨‍💼 Admin Dashboard</h2>
 
-        <!-- Admin Stats -->
         <div class="stats-grid" id="adminStatsGrid"></div>
 
-        <!-- Workers Management -->
-        <h3 style="margin-top:  2rem;">👥 Workers Management</h3>
+        <h3>👥 Workers Management</h3>
         <div class="table-container">
-          <table class="data-table" id="workersTable">
+          <table class="data-table">
             <thead>
               <tr>
                 <th>Worker ID</th>
                 <th>Name</th>
                 <th>Profession</th>
                 <th>Location</th>
-                <th>Experience</th>
                 <th>Progress %</th>
                 <th>Status</th>
               </tr>
@@ -300,9 +290,8 @@
           </table>
         </div>
 
-        <!-- Queries Management -->
-        <h3 style="margin-top: 2rem;">📝 Queries Management</h3>
-        <div class="queries-management" id="queriesManagement"></div>
+        <h3>📝 Queries Management</h3>
+        <div id="queriesManagement"></div>
       </div>
     </section>
 
@@ -314,57 +303,38 @@
           <div class="feature-card">
             <div class="feature-icon">📋</div>
             <h3>Worker Registration</h3>
-            <p>Officially register and receive a unique Worker ID.  Get formally recognized as an informal worker.</p>
+            <p>Officially register and receive a unique Worker ID. </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">📚</div>
             <h3>Upskilling Modules</h3>
-            <p>Complete training in Safety, Financial Literacy, and Tool Handling. Track progress in real-time.</p>
+            <p>Complete training in Safety, Financial Literacy, and Tool Handling.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
             <h3>Query & Grievances</h3>
-            <p>Submit complaints and queries. Get official support for payment, safety, and harassment issues.</p>
+            <p>Submit complaints and queries.  Get official support. </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">📊</div>
             <h3>Dashboard Analytics</h3>
-            <p>View your profile, training progress, and query status in one place.</p>
+            <p>View your profile, training progress, and query status.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🔐</div>
             <h3>Secure & Verified</h3>
-            <p>Government-grade security.  All your data is protected and verified.</p>
+            <p>Government-grade security for all your data. </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">👨‍💼</div>
             <h3>Admin Management</h3>
-            <p>Dedicated admin portal for managing workers, queries, and monitoring progress.</p>
+            <p>Dedicated admin portal for managing workers and queries.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="container">
-        <h2>About SHAKTI SEVA</h2>
-        <div class="about-content">
-          <p>
-            SHAKTI SEVA is a government-integrated portal designed to formally recognize and support informal, 
-            unorganized, and day-pay workers.  It bridges the gap between workers and official recognition, 
-            providing them with opportunities for upskilling and a platform to address grievances.
-          </p>
-          <p>
-            The portal operates on three core pillars:  <strong>Registration</strong> (formal recognition), 
-            <strong>Upskilling</strong> (skill development), and <strong>Grievance Redressal</strong> 
-            (query resolution). All powered by government-grade security and transparency.
-          </p>
         </div>
       </div>
     </section>
@@ -372,12 +342,10 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 SHAKTI SEVA | Official Government Worker Portal | Empowering India's Informal Workforce</p>
-    </div>
+    <p>&copy; 2026 SHAKTI SEVA | Official Government Worker Portal</p>
   </footer>
 
   <!-- App Script -->
-  <script type="module" src="script.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
