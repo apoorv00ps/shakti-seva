@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHAKTI SEVA - Worker Registration Portal</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation Header -->
@@ -41,12 +41,12 @@
     </section>
 
     <!-- Auth Sections (Hidden by default) -->
-    <section id="auth-section" class="auth-container" style="display:none;">
+    <section id="auth-section" class="auth-container" style="display: none;">
       <div class="auth-card">
         <button class="close-btn" id="closeAuthBtn">&times;</button>
         
         <!-- Login Form -->
-        <div id="login-form" class="auth-form" style="display:none;">
+        <div id="login-form" class="auth-form" style="display: none;">
           <h2>🔐 Login</h2>
           <div id="loginAlert" class="alert" style="display:none;"></div>
           
@@ -60,7 +60,7 @@
             <input type="password" id="loginPassword" placeholder="At least 6 characters" required>
           </div>
 
-          <button id="loginSubmitBtn" class="btn btn-primary" style="width:100%;">Login</button>
+          <button id="loginSubmitBtn" class="btn btn-primary" style="width: 100%;">Login</button>
 
           <p class="auth-switch">
             Don't have an account? 
@@ -80,7 +80,7 @@
 
           <div class="form-group">
             <label>Email Address *</label>
-            <input type="email" id="workerEmail" placeholder="your@email.com" required>
+            <input type="email" id="workerEmail" placeholder="your@email. com" required>
           </div>
 
           <div class="form-group">
@@ -121,13 +121,13 @@
           <button id="workerRegSubmitBtn" class="btn btn-primary" style="width:100%;">Register as Worker</button>
 
           <p class="auth-switch">
-            Already have an account?  
+            Already have an account?   
             <button id="switchToLoginBtn" class="link-btn">Login here</button>
           </p>
         </div>
 
         <!-- Admin Registration Form -->
-        <div id="admin-reg-form" class="auth-form" style="display: none;">
+        <div id="admin-reg-form" class="auth-form" style="display:  none;">
           <h2>👨‍💼 Admin Registration</h2>
           <div id="adminAlert" class="alert" style="display:none;"></div>
 
@@ -170,7 +170,7 @@
           <button id="adminRegSubmitBtn" class="btn btn-primary" style="width:100%;">Register as Admin</button>
 
           <p class="auth-switch">
-            Already have an account? 
+            Already have an account?  
             <button id="switchToLoginBtn2" class="link-btn">Login here</button>
           </p>
         </div>
@@ -326,13 +326,13 @@
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
             <h3>Query & Grievances</h3>
-            <p>Submit complaints and queries.  Get official support for payment, safety, and harassment issues.</p>
+            <p>Submit complaints and queries. Get official support for payment, safety, and harassment issues.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">📊</div>
             <h3>Dashboard Analytics</h3>
-            <p>View your profile, training progress, and query status in one place. </p>
+            <p>View your profile, training progress, and query status in one place.</p>
           </div>
 
           <div class="feature-card">
@@ -357,7 +357,7 @@
         <div class="about-content">
           <p>
             SHAKTI SEVA is a government-integrated portal designed to formally recognize and support informal, 
-            unorganized, and day-pay workers. It bridges the gap between workers and official recognition, 
+            unorganized, and day-pay workers.  It bridges the gap between workers and official recognition, 
             providing them with opportunities for upskilling and a platform to address grievances.
           </p>
           <p>
@@ -377,10 +377,7 @@
     </div>
   </footer>
 
-  <!-- Firebase SDK -->
-  <script type="module" src="firebase-config.js"></script>
-  
   <!-- App Script -->
-  <script type="module" src="script.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
