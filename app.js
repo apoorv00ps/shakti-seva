@@ -81,6 +81,7 @@ window.workerRegister = async function() {
         });
 
         showMessage('workerRegisterMessage', `Registration successful! Your Worker ID is: ${workerId}`, 'success');
+        alert(`Note your worker id: ${workerId}`);
         
         // Clear form
         document.getElementById('workerName').value = '';
